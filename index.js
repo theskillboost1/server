@@ -12,7 +12,7 @@ app.use(express.static(Path.join(__dirname,`../dream`)))
 
 app.use(cors());
 
-mongoose.connect('mongodb+srv://aryangrover:Aryan123@cluster0.kuot8.mongodb.net/theskillboost')
+mongoose.connect('mongodb+srv://sawalarora20:Supersawal@cluster0.dtd4w.mongodb.net/theskillboost?retryWrites=true&w=majority')
     .then(() => console.log("connected"))
     .catch((err) => console.log(err));
 
