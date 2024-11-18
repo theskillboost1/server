@@ -7,7 +7,6 @@ const Path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(cors());
 app.use(express.static(Path.join(__dirname,`../dream`)))
 
