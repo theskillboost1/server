@@ -29,14 +29,14 @@ const UserSchema = new mongoose.Schema({
 
 const UserModel = mongoose.model("user", UserSchema);
 
-app.get('/', (req, res) => {
-    res.sendFile(Path.join(__dirname, '../dream/index.html'));
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(Path.join(__dirname, '../dream/index.html'));
+// });
 
 
-app.get('/admin', (req, res) => {
-    res.sendFile(Path.join(__dirname, '../dream/form.html'));
-});
+// app.get('/admin', (req, res) => {
+//     res.sendFile(Path.join(__dirname, '../dream/form.html'));
+// });
 app.get('/dashboard', (req, res) => {
 
     UserModel.find({})
