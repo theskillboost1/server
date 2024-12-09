@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.static(Path.join(__dirname,`../dream`)))
 
 app.use(cors());
-mongoose.connect('mongodb://127.0.0.1:27017/theskillboost')
+mongoose.connect('mongodb+srv://sawalarora20:Supersawal@cluster0.dtd4w.mongodb.net/theskillboost?retryWrites=true&w=majority')
     .then(() => console.log("connected"))
     .catch((err) => console.log(err));
 
@@ -30,9 +30,9 @@ const UserSchema = new mongoose.Schema({
 
 const UserModel = mongoose.model("user", UserSchema);
 
-app.get('/', (req, res) => {
-    res.sendFile(Path.join(__dirname, '../dream/index.html'));
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(Path.join(__dirname, '../dream/index.html'));
+// });
 
 
 // app.get('/admin', (req, res) => {
@@ -157,4 +157,4 @@ app.delete('/delete1/:id', (req, res) => {
 });
 
 
-app.listen(8081);
+app.listen(8082);
