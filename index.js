@@ -11,16 +11,17 @@ app.use(cors());
 app.use(express.static(Path.join(__dirname,`../dream`)))
 
 app.use(cors());
-
-mongoose.connect('mongodb+srv://sawalarora20:Supersawal@cluster0.dtd4w.mongodb.net/theskillboost?retryWrites=true&w=majority')
+mongoose.connect('mongodb://127.0.0.1:27017/theskillboost')
     .then(() => console.log("connected"))
     .catch((err) => console.log(err));
 
 const UserSchema = new mongoose.Schema({
     Name: String,
+    Date: String,
     Email: String,
     Contact: String,
     Qualification: String,
+    Date: String,
     Course: String
 
 
@@ -29,9 +30,9 @@ const UserSchema = new mongoose.Schema({
 
 const UserModel = mongoose.model("user", UserSchema);
 
-// app.get('/', (req, res) => {
-//     res.sendFile(Path.join(__dirname, '../dream/index.html'));
-// });
+app.get('/', (req, res) => {
+    res.sendFile(Path.join(__dirname, '../dream/index.html'));
+});
 
 
 // app.get('/admin', (req, res) => {
@@ -50,9 +51,9 @@ app.get('/dashboard', (req, res) => {
 
 app.post('/create', (req, res) => {
     
-    const { Name, Email, Contact,Qualification,Course } = req.body;
+    const { Name, Email, Contact,Qualification,Course,Date } = req.body;
 
-    UserModel.create({ Name, Email, Contact,Qualification,Course })
+    UserModel.create({ Name, Email, Contact,Qualification,Course,Date })
         .then((data) => {
             res.json(data);  
         })
@@ -90,10 +91,12 @@ app.delete('/delete/:id', (req, res) => {
 
 const UserSchema1 = new mongoose.Schema({
     Name: String,
+    Date: String,
     email: String,
     Number: String,
+    Subject: String,
     Message: String,
-    Subject: String
+  
 
 
 
@@ -115,11 +118,12 @@ app.get('/dashboard1', (req, res) => {
 
 app.post('/create1', (req, res) => {
     
-    const { Name, email, Number,Message,Subject } = req.body;
+    const { Name, Date, email, Number,Message,Subject, } = req.body;
 
-    UserModel1.create({ Name, email, Number,Message,Subject })
+    UserModel1.create({ Name, Date, email, Number,Message,Subject, })
         .then((data) => {
             res.json(data);  
+            res.redirect('/');
         })
         .catch((err) => {
             console.error(err);
