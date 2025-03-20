@@ -226,12 +226,23 @@ app.get("/blog/:slug", (req, res) => {
 
 
 
-app.get('/digitalmarketing', (req, res) => {
-    res.redirect(301, 'http://theskillboost.com/digital-marketing-course-chandigarh');
-  });
-  app.get('/digital-marketing-course-chandigarh', (req, res) => {
-    res.send('You have been redirected to the new page!');
-  });
+// app.get('/digitalmarketing', (req, res) => {
+//     res.redirect(301, 'http://theskillboost.com/digital-marketing-course-chandigarh');
+//   });
+//   app.get('/digital-marketing-course-chandigarh', (req, res) => {
+//     res.send('You have been redirected to the new page!');
+//   });
 
+
+
+
+app.get('/digitalmarketing', (req, res) => {
+    console.log("Redirecting from /digitalmarketing to new page...");
+    res.redirect(301, 'http://theskillboost.com/courses/digital-marketing-course-chandigarh');
+});
+
+app.get('/digital-marketing-course-chandigarh', (req, res) => {
+    res.send('You have been redirected to the new page!');
+});
 
 app.listen(8081);
