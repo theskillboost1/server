@@ -229,7 +229,9 @@ app.get("/blog/:slug", (req, res) => {
 app.get('/digitalmarketing', (req, res) => {
     res.redirect(301, 'http://example.com/digital-marketing-course-chandigarh');
   });
-
+  app.get('/digital-marketing-course-chandigarh', (req, res) => {
+    res.send('You have been redirected to the new page!');
+  });
 
 
 app.listen(8081);
