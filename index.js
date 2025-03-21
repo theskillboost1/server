@@ -168,8 +168,8 @@ app.post("/createblog", (req, res) => {
     BlogModel.create({ Title, Description, Description1, Date, Slug })
         .then((blog) => {
             // res.status(201).json(blog);
-            res.redirect('https://www.theskillboost.com/contact');
-            
+            res.redirect('https://theskillboost.com/adminblogs');
+               
         })
         .catch((err) => {
             console.error(err);
