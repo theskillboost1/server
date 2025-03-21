@@ -233,7 +233,6 @@ app.get("/blog/:slug", (req, res) => {
 const adviceSchema = new mongoose.Schema({
     Name: String,
     Phone: String,
-  
     Course: String
 
 });
@@ -243,6 +242,8 @@ const Advicemodel = mongoose.model("advice", adviceSchema);
 
 app.post('/advice', (req, res) => {
     const { Name, Phone, Course } = req.body;
+
+    console.log(req.body)
 
     Advicemodel.create({ Name,Phone,Course })
         .then((data) => {
