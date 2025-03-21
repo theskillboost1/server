@@ -7,10 +7,12 @@ const Path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
 app.use(cors());
 app.use(express.static(Path.join(__dirname, `../dream`)))
 
-app.use(cors());
+
 
 mongoose.connect('mongodb+srv://sawalarora20:Supersawal@cluster0.dtd4w.mongodb.net/theskillboost?retryWrites=true&w=majority')
     .then(() => console.log("connected"))
