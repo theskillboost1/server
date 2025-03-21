@@ -222,27 +222,50 @@ app.get("/blog/:slug", (req, res) => {
 
 
 
-// redirection
-
-
-
-// app.get('/digitalmarketing', (req, res) => {
-//     res.redirect(301, 'http://theskillboost.com/digital-marketing-course-chandigarh');
-//   });
-//   app.get('/digital-marketing-course-chandigarh', (req, res) => {
-//     res.send('You have been redirected to the new page!');
-//   });
 
 
 
 
-app.get('/digitalmarketing', (req, res) => {
-    console.log("Redirecting from /digitalmarketing to new page...");
-    res.redirect(301, 'http://theskillboost.com/courses/digital-marketing-course-chandigarh');
+// get advice
+
+
+
+const adviceSchema = new mongoose.Schema({
+    Name: String,
+    Phone: String,
+  
+    Course: String
+
 });
 
-app.get('/digital-marketing-course-chandigarh', (req, res) => {
-    res.send('You have been redirected to the new page!');
+const Advicemodel = mongoose.model("advice", adviceSchema);
+
+
+app.post('/advice', (req, res) => {
+    const { Name, Phone, Course } = req.body;
+
+    Advicemodel.create({ Name,Phone,Course })
+        .then((data) => {
+            res.redirect('https://www.theskillboost.com/');
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error creating user.');
+        });
 });
+
+
+
+app.get("/advicedata",(req,res)=>{
+    Advicemodel.find({})
+    .then((data) => {
+        res.json(data);  // Return all data
+    })
+    .catch((err) => res.json(err));
+})
+
+
+
+
 
 app.listen(8081);
